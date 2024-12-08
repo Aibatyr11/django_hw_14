@@ -17,7 +17,7 @@ urlpatterns = [
 
     path('comment_delete/<slug:slug>/', comment_delete, name="comment_delete"),
 
-    #hw
+    #hw1
     # Главная страница со списком задач
     path('tasks/', views.task_list, name='task_list'),
 
@@ -40,6 +40,27 @@ urlpatterns = [
     path('tasks/status/<slug:status>/', views.tasks_by_status, name='tasks_by_status'),
 
 
+    #hw2
+    #Главная страница со списком задач
+    re_path(r'^tasks/$', views.task_list, name='task_list'),
+
+    #Просмотр задачи по ID
+    re_path(r'^tasks/(?P<task_id>\d+)/$', views.view_task, name='view_task'),
+
+    #Добавление новой задачи
+    path('tasks/add/', views.TaskCreateView.as_view(), name='add_task'),
+
+    #Редактирование задачи по ID
+    re_path(r'^tasks/edit/(?P<task_id>\d+)/$', views.edit_task, name='edit_task'),
+
+    #Удаление задачи по ID
+    re_path(r'^tasks/delete/(?P<task_id>\d+)/$', views.delete_task, name='delete_task'),
+
+    #Поиск задач.
+    path('tasks/search/', views.search_tasks, name='search_tasks'),
+
+    #Задачи по статусу (выполненные/невыполненные).
+    re_path(r'^tasks/status/(?P<status>[a-zA-Z\-]+)/$', views.tasks_by_status, name='tasks_by_status'),
 
 
 
