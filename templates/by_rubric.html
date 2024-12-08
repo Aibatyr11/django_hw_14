@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block title %} {{ current_rubric.name }} {% endblock %}
+
+{% block content %}
+
+
+    <h1>Рубрика: {{ current_rubric.name }}</h1>
+    <h1>Посты</h1>
+    {% for b in bb %}
+
+    <h2>{{ b.title }}</h2>
+        <p>{{ b.content }}</p>
+
+        <p>{{ b.published }}</p>
+    {% endfor %}
+{% endblock %}
+
